@@ -1,4 +1,6 @@
-object MyModule {
+package exercises
+
+object chapter2 {
   def abs(n: Int): Int =
     if (n < 0) -n
     else n
