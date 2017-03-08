@@ -96,6 +96,10 @@ object List {
     foldLeft(ints, 1)((h, _) => h * acc)
   }
 
+  def lengthWithFoldLeft[A](as: List[A], z: A)(f: A => Int): Int = {
+    foldLeft(as, 0)((acc, _) => acc + 1)
+  }
+
   def main(args: Array[String]): Unit = {
     println("you're in")
   }
