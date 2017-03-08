@@ -88,8 +88,12 @@ object List {
     foldRight(as, 0)((_, acc) => acc + 1)
   }
 
-  def sumWithFoldLeft[A](ints: List[Int], z: Int)(f: Int => Int): Int = {
-    foldLeft(ints, 0)((acc, _) => acc + 1)
+  def sumWithFoldLeft(ints: List[Int], acc: Int)(f: Int => Int): Int = {
+    foldLeft(ints, 0)((h, _) => h + acc)
+  }
+
+  def productWithFoldLeft(ints: List[Int], acc: Int)(f: Int => Int): Int = {
+    foldLeft(ints, 1)((h, _) => h * acc)
   }
 
   def main(args: Array[String]): Unit = {
