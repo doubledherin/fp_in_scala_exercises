@@ -84,8 +84,12 @@ object List {
   }
 
 
-  def length[A](as: List[A], z: A)(f: A => Int): Int = {
+  def lengthWithFoldRight[A](as: List[A], z: A)(f: A => Int): Int = {
     foldRight(as, 0)((_, acc) => acc + 1)
+  }
+
+  def sumWithFoldLeft[A](ints: List[Int], z: Int)(f: Int => Int): Int = {
+    foldLeft(ints, 0)((acc, _) => acc + 1)
   }
 
   def main(args: Array[String]): Unit = {
