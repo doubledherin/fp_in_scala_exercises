@@ -66,6 +66,28 @@ object List {
     }
   }
 
+  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = {
+    as match {
+      case Nil => z
+      case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+    }
+  }
+
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = {
+    def foldLeftHelper(xs: List[A], acc: B): B = {
+      xs match {
+        case Nil => acc
+        case Cons(h, _) => foldLeftHelper(xs, f(acc, h))
+      }
+    }
+    foldLeftHelper(as, z)
+  }
+
+
+  def length[A](as: List[A], z: A)(f: A => Int): Int = {
+    foldRight(as, 0)((_, acc) => acc + 1)
+  }
+
   def main(args: Array[String]): Unit = {
     println("you're in")
   }
